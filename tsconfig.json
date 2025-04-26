@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "ESNext",
+		"skipLibCheck": true,
+		"lib": ["ESNEXT"],
+		"moduleResolution": "Bundler",
+		"jsxImportSource": "react",
+		"jsx": "react-jsx",
+		"strict": true,
+		"baseUrl": "./",
+		"esModuleInterop": true,
+		"paths": {
+			"@server/*": ["./src/*"],
+			"@schema": ["./schema/index.ts"]
+		},
+		"types": ["@cloudflare/workers-types"]
+	},
+	"include": ["**/*.ts", "**/*.tsx"],
+	"ts-node": {
+		"compilerOptions": {
+			"module": "commonjs"
+		}
+	}
+}
