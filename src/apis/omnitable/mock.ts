@@ -12,9 +12,9 @@ const output_type = union([
 	object({ ids: array(number()) })
 ])
 
-type OutputRefreshToken = Promise<TypedResponse<Infer<typeof output_type>>>
+type Output = Promise<TypedResponse<Infer<typeof output_type>>>
 
-const handler = async (c: AppContext): OutputRefreshToken => {
+const handler = async (c: AppContext): Output => {
 	const db = c.var.$db
 
 	const [err, res] = await to(

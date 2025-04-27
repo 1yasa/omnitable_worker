@@ -19,9 +19,9 @@ const input_type = task_schema.omit({ id: true }).partial({
 const output_type = union([object({ error: literal('db_create_error'), message: string() }), object({ id: number() })])
 
 type Input = Infer<typeof input_type>
-type OutputRefreshToken = Promise<TypedResponse<Infer<typeof output_type>>>
+type Output = Promise<TypedResponse<Infer<typeof output_type>>>
 
-const handler = async (c: AppContext<GetValidateData<Input>>): OutputRefreshToken => {
+const handler = async (c: AppContext<GetValidateData<Input>>): Output => {
 	const values = c.req.valid('json')
 	const db = c.var.$db
 

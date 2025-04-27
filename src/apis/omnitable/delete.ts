@@ -8,9 +8,9 @@ import type { TypedResponse } from 'hono'
 
 const output_type = union([object({ error: literal('db_delete_error'), message: string() }), object({ id: number() })])
 
-type OutputRefreshToken = Promise<TypedResponse<Infer<typeof output_type>>>
+type Output = Promise<TypedResponse<Infer<typeof output_type>>>
 
-const handler = async (c: AppContext): OutputRefreshToken => {
+const handler = async (c: AppContext): Output => {
 	const id = parseInt(c.req.param('id')!)
 	const db = c.var.$db
 

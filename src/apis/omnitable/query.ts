@@ -42,9 +42,9 @@ const output_type = union([
 ])
 
 type Input = Infer<typeof input_type>
-type OutputRefreshToken = Promise<TypedResponse<Infer<typeof output_type>>>
+type Output = Promise<TypedResponse<Infer<typeof output_type>>>
 
-const handler = async (c: AppContext<GetValidateData<Input>>): OutputRefreshToken => {
+const handler = async (c: AppContext<GetValidateData<Input>>): Output => {
 	const { sort_params, filter_relation, filter_params, page, pagesize } = c.req.valid('json')
 	const db = c.var.$db
 
