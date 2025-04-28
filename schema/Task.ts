@@ -11,6 +11,7 @@ export default sqliteTable(
 		estimated_hours: integer('estimated_hours').default(3),
 		deadline_time: integer('deadline_time'),
 		labels: text('labels', { mode: 'json' }).$type<Array<string>>().default(sql`'[]'`),
+		miner: text('miner'),
 		create_at: integer('create_at').$defaultFn(() => new Date().valueOf()),
 		update_at: integer('update_at').$onUpdateFn(() => new Date().valueOf())
 	},
