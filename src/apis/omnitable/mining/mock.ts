@@ -20,7 +20,7 @@ const handler = async (c: AppContext): Output => {
 	const [err, res] = await to(
 		db
 			.insert(Mining)
-			.values(data.sort(() => Math.random() - 0.5).slice(0, 4))
+			.values(data.sort(() => Math.random() - 0.5).slice(0, 9))
 			.returning()
 	)
 

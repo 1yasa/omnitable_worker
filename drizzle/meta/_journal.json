@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1745653773742,
-      "tag": "0000_known_enchantress",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1745856523094,
-      "tag": "0001_motionless_vampiro",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1745906516865,
-      "tag": "0002_stiff_nomad",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "6",
-      "when": 1745907574143,
-      "tag": "0003_blue_earthquake",
+      "when": 1745931051171,
+      "tag": "0000_elite_mojo",
       "breakpoints": true
     }
   ]
