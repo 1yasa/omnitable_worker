@@ -1,4 +1,4 @@
-import { Task } from '@schema'
+import { Mining, Task } from '@schema'
 
 import type { Context } from 'hono'
 
@@ -6,6 +6,7 @@ import type { DrizzleD1Database } from 'drizzle-orm/d1'
 
 export type DrizzleDB = DrizzleD1Database<{
 	Task: typeof Task
+	Mining: typeof Mining
 }>
 
 export interface Bindings {

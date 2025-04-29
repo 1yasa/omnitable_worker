@@ -1,22 +1,16 @@
 import { Hono } from 'hono'
 
 import create from './create'
-import { default as remove } from './delete'
-import getOptions from './getOptions'
-import mining from './mining'
 import mock from './mock'
 import query from './query'
-import searchOptions from './searchOptions'
+import searchFarms from './searchFarms'
 import update from './update'
 
-import type { HonoEnv } from '../../types'
+import type { HonoEnv } from '../../../types'
 
 export default new Hono<HonoEnv>()
-	.route('mining', mining)
 	.get('/mock', mock.handler)
-	.get('/getOptions', getOptions.handler)
-	.get('/searchOptions', searchOptions.handler)
+	.get('/searchFarms', searchFarms.handler)
 	.post('/create', create.validator, create.handler)
-	.post('/delete/:id', remove.handler)
 	.post('/update/:id', update.validator, update.handler)
 	.post('/query', query.validator, query.handler)
