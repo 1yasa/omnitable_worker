@@ -3,3 +3,4 @@
 // export { default as Activation } from './Activation'
 export { default as Task } from './Task'
 export { default as Mining } from './Mining'
+export { default as Log } from './Log'

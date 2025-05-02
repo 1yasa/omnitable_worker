@@ -9,7 +9,7 @@ import { routers } from '@server/rpcs'
 import apis from './apis'
 import { getDrizzleDB } from './utils'
 
-import type { HonoEnv } from './types'
+import type { HonoEnv, Bindings } from './types'
 
 const app = new Hono<HonoEnv>()
 
@@ -46,4 +46,16 @@ app.route('/api', apis)
 // 	})
 // )
 
-export default app
+// export default app
+
+export default {
+	fetch: app.fetch
+	// // 定时创建新的log模拟真实日志场景（每分钟执行一次）
+	// scheduled(e: ScheduledEvent, env: Bindings, ctx: AppContext) {
+	// 	switch (e.cron) {
+	// 		case '*/1 * * * *':
+	// 			console.log(123)
+	// 			break
+	// 	}
+	// }
+}

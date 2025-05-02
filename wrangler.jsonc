@@ -18,8 +18,10 @@
                   "migrations_dir": "drizzle"
             }
       ],
-      // "ai": {
-      //       "binding": "ai"
+      // "triggers": {
+      //       "crons": [
+      //             "*/3 * * * * *"
+      //       ]
       // },
       "unsafe": {
             "bindings": [

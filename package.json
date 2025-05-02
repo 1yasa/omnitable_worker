@@ -5,7 +5,7 @@
 	"main": "dist/index.js",
 	"types": "src/trpc",
 	"scripts": {
-		"dev": "concurrently \"pnpm run watch\" \"wrangler dev --local\"",
+		"dev": "concurrently \"pnpm run watch\" \"wrangler dev --local --test-scheduled\"",
 		"watch": "cross-env MODE=dev rspack build --watch",
 		"build": "cross-env MODE=prod rspack build",
 		"genPassword": "bun ./scripts/genPassword",
