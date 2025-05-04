@@ -9,6 +9,7 @@ export { default as getResend } from './getResend'
 export { default as getVerifyCode } from './getVerifyCode'
 export { default as getPaddle } from './getPaddle'
 export { default as updateRefreshToken } from './updateRefreshToken'
+export { default as getTimeRanges } from './getTimeRanges'
 
 export * from './trpc'
 export * from './time'
