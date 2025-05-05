@@ -74,7 +74,7 @@ const handler = async (c: AppContext<GetValidateData<Input>>): Output => {
 		})
 	)
 
-	const total = await db.select({ count: count() }).from(Log).get()
+	const total = await db.select({ count: count() }).from(Log).where(where).get()
 
 	if (err) return c.json({ error: 'db_query_error', message: err.message })
 
