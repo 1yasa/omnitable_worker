@@ -22,10 +22,36 @@ const output_type = union([
 
 type Output = Promise<TypedResponse<Infer<typeof output_type>>>
 
+const args_map = {
+	minutes: {
+		duration_format: 'HH:mm:ss',
+		span_value: 30,
+		span_unit: 'minute',
+		tick_value: 30,
+		tick_unit: 'second'
+	},
+	hours: {
+		duration_format: 'HH:mm',
+		span_value: 24,
+		span_unit: 'hour',
+		tick_value: 30,
+		tick_unit: 'minute'
+	},
+	days: {
+		duration_format: 'MM-DD',
+		span_value: 30,
+		span_unit: 'day',
+		tick_value: 12,
+		tick_unit: 'hour'
+	}
+} as const
+
 const handler = async (c: AppContext): Output => {
+	const type = (c.req.query('type') || 'hours') as 'minutes' | 'hours' | 'days'
 	const timestamp = c.req.query('timestamp')!
 	const db = c.var.$db
-	const ranges = getTimeRanges(timestamp)
+	const args = args_map[type]
+	const ranges = getTimeRanges({ timestamp: Number(timestamp), ...args })
 
 	const data = await Promise.all(
 		ranges.map(async range => {
@@ -54,7 +80,7 @@ const handler = async (c: AppContext): Output => {
 
 			return {
 				range,
-				duration: `${dayjs(start).format('HH:mm')}`,
+				duration: `${dayjs(start).format(args.duration_format)}`,
 				...target
 			}
 		})
