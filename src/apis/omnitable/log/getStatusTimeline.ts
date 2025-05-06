@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { and, between } from 'drizzle-orm'
 import { groupBy } from 'lodash-es'
-import { array, infer as Infer, literal, number, object, record, string, tuple, union } from 'zod'
+import { array, infer as Infer, literal, number, object, string, tuple, union } from 'zod'
 
 import { Log } from '@schema'
 import { getTimeRanges } from '@server/utils'

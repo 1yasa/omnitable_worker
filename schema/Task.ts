@@ -12,6 +12,10 @@ export default sqliteTable(
 		deadline_time: integer('deadline_time'),
 		labels: text('labels', { mode: 'json' }).$type<Array<string>>().default(sql`'[]'`),
 		miner: text('miner'),
+		description: text('description'),
+		comments: text('comments', { mode: 'json' })
+			.$type<Array<{ role: string; text: string; date: string }>>()
+			.default(sql`'[]'`),
 		create_at: integer('create_at').$defaultFn(() => new Date().valueOf()),
 		update_at: integer('update_at').$onUpdateFn(() => new Date().valueOf())
 	},
