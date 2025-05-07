@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import { and, between } from 'drizzle-orm'
 import { groupBy } from 'lodash-es'
 import { array, infer as Infer, literal, number, object, string, tuple, union } from 'zod'
@@ -14,7 +13,7 @@ const output_type = union([
 		data: array(
 			object({
 				range: tuple([number(), number()]),
-				duration: string()
+				duration: number()
 			})
 		)
 	})
@@ -80,7 +79,7 @@ const handler = async (c: AppContext): Output => {
 
 			return {
 				range,
-				duration: `${dayjs(start).format(args.duration_format)}`,
+				duration: start,
 				...target
 			}
 		})

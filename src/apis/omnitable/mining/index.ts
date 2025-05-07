@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 
+import compare from './compare'
 import create from './create'
 import mock from './mock'
 import query from './query'
@@ -14,3 +15,4 @@ export default new Hono<HonoEnv>()
 	.post('/create', create.validator, create.handler)
 	.post('/update/:id', update.validator, update.handler)
 	.post('/query', query.validator, query.handler)
+	.post('/compare', compare.validator, compare.handler)
