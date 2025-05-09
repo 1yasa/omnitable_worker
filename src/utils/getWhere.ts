@@ -1,5 +1,12 @@
 import { sql } from 'drizzle-orm'
 
+export const getSqlValues = (values: Array<any>) => {
+	const params = values.map(value => sql.param(value))
+	const target = sql.join(params, sql`, `)
+
+	return target
+}
+
 export const filters = {
 	'is empty': (field: string, _: any) => sql`${sql.identifier(field)} = '' OR ${sql.identifier(field)} IS NULL`,
 
@@ -33,7 +40,7 @@ export const filters = {
 
 	'is on or after': (field: string, value: number) => sql`${sql.identifier(field)} >= ${value}`,
 
-	'has any of': (field: string, values: any[]) => sql`${sql.identifier(field)} IN (${values.join(', ')})`,
+	'has any of': (field: string, values: any[]) => sql`${sql.identifier(field)} IN (${getSqlValues(values)})`,
 
-	'has none of': (field: string, values: any[]) => sql`${sql.identifier(field)} NOT IN (${values.join(', ')})`
+	'has none of': (field: string, values: any[]) => sql`${sql.identifier(field)} NOT IN (${getSqlValues(values)})`
 }
